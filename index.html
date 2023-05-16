@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet">
+<style>
+  body{
+    background-color: #d2001a;
+
+  }
+  .clock{
+    color: #FFDE00;
+    font-family: 'Barrio', cursive;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    padding-top: 75px;
+  }
+  .clock span{
+    font-weight: bold;
+    opacity: 0.7;
+
+  }
+  .time_box{}
+  .time_box span{
+    font-size: 8rem;
+    opacity: 1;
+  }
+  .time_box .txt_lg{
+  }
+  .time_box .mark{
+    vertical-align: 8px;
+  }
+  .time_box #hour{}
+  .time_box #min{}
+  .time_box #sec{}
+
+  .date_box{
+    font-size: 3rem;
+  }
+  .date_box span{}
+  .date_box #month{}
+  .date_box #date{}
+  .date_box #year{}
+  .date_box #day{
+    display: block;
+    margin-top: 5px;
+  }
+  .date_box .point{}
+</style>
+</head>
+<body>
+  <div class="clock">
+    <div class="time_box">
+      <span class="txt_lg" id="hours"></span>
+      <span class="mark">:</span>
+      <span class="txt_lg" id="min"></span>
+      <span class="mark">:</span>
+      <span class="txt_lg" id="sec"></span>
+    </div>
+    <div class="date_box">
+      <span id="month"></span>
+      <span class="point">.</span>
+      <span id="date"></span>
+      <span class="point">.</span>
+      <span id="year"></span>
+      <span id="day"></span>
+    </div>
+
+  </div>
+
+
+
+  <script>
+    
+    setInterval(function(){
+      let today = new Date();
+
+      let dayList= ['일요일','월요일','화요일','수요일','목요일','금요일','토요일',]
+      let dayListEng= ['SUN','MON','TUE','WED','THU','FRI','SAT',]
+
+      let hh = addZero(today.getHours()); //시
+      let mm = addZero(today.getMinutes()); //분
+      let ss = addZero(today.getSeconds()); //초
+      let YY = today.getFullYear();
+      let MM = today.getMonth()+1;
+      let DD = today.getDate();
+      let day= dayListEng[today.getDay()].toUpperCase();
+
+      document.querySelector('#hours').innerHTML=hh;
+      document.querySelector('#min').innerHTML=mm;
+      document.querySelector('#sec').innerHTML=ss;
+
+      document.querySelector('#year').innerHTML=YY;
+      document.querySelector('#month').innerHTML=MM;
+      document.querySelector('#date').innerHTML=DD;
+      document.querySelector('#day').innerHTML=day;
+
+      
+
+      console.log(ss)
+      function addZero(num){
+        
+        return(num<10?"0"+num:''+num)
+
+      }
+    },1000)
+    
+  </script>
+
+
+</body>
+</html>
